@@ -1,0 +1,36 @@
+Task 2
+Simple Calculator
+Develop a calculator program that performs basic arithmetic
+operations such as addition, subtraction, multiplication, and
+division. Allow the user to input two numbers and choose an
+operation to perform.
+coding:
+#include<iostream>
+using namespace std;
+int main()
+{    
+    char op;
+    float a,b;
+    cout<<"ENTER YOUR OPERATION : +, -, *, / ";
+    cin>>op;
+    cout<<"ENTER TWO NUMBERS : ";
+    cin>>a>>b;
+    cout<<"RESULT:";
+    switch(op)
+    {
+        case '+':
+        cout<<a<<" + "<<b<<" = "<<a+b;
+        break;
+        case '-':
+        cout<<a<<" - "<<b<<" = "<<a-b;
+        break;
+        case '*':
+        cout<<a<<" * "<<b<<" = "<<a*b;
+        break;
+        case '/':
+        cout<<a<<" / "<<b<<" = "<<a/b;
+        break;
+        
+        
+    }
+}
