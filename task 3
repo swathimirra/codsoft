@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm> 
+using namespace std;
+void inputGrades(vector<string>& names, vector<double>& grades);
+void displayResults(const vector<string>& names, const vector<double>& grades);
+int main() {
+    vector<string> studentNames;
+    vector<double> studentGrades;
+
+    inputGrades(studentNames, studentGrades);
+    displayResults(studentNames, studentGrades);
+
+    return 0;
+}
+void inputGrades(vector<string>& names, vector<double>& grades) {
+    int numStudents;
+    string name;
+    double grade;
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
+    for (int i = 0; i < numStudents; ++i)
+    {
+        cout << "Enter the name of student " << i + 1 << ": ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Enter the grade of student " << i + 1 << ": ";
+        cin >> grade;
+        names.push_back(name);
+        grades.push_back(grade);
+    }
+}
+void displayResults(const vector<string>& names, const vector<double>& grades) {
+    if (names.empty() || grades.empty()) {
+        cout << "No data available. Exiting program." << endl;
+        return;
+    }
+    double sum = 0.0;
+    for (double grade : grades) {
+        sum += grade;
+    }
+    double average = sum / grades.size();
+    double highestGrade = *max_element(grades.begin(), grades.end());
+    double lowestGrade = *min_element(grades.begin(), grades.end());
+    cout << "\n===== Results =====" << endl;
+    cout << "Average Grade: " << average << endl;
+    cout << "Highest Grade: " << highestGrade << endl;
+    cout << "Lowest Grade: " << lowestGrade << endl;
+    cout << "\n===== Individual Grades =====" << endl;
+    for (size_t i = 0; i < names.size(); ++i) {
+        cout << names[i] << ": " << grades[i] << endl;
+    }
+}
